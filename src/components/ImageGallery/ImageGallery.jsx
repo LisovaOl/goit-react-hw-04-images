@@ -4,7 +4,7 @@ export class ImageGallery extends Component {
   render() {
     return (
       <div>
-        <ul class="gallery">
+        <ul className="gallery">
           <li></li>
         </ul>
       </div>

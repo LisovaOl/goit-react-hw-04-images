@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import { FcSearch } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 export class SearchBar extends Component {
   state = {
     input: '',
   };
-    
+
   handleNameChange = event => {
     this.setState({ input: event.currentTarget.value.toLowerCase() });
   };
-    
+
   handleSubmit = event => {
-      event.preventDefault();
-      if (this.state.input.trim() === '') {
-          toast.warn('Please fill in the search field', { theme: 'colored' });
-          return; 
-      }
+    event.preventDefault();
+    if (this.state.input.trim() === '') {
+      toast.warn('Please fill in the search field', { theme: 'colored' });
+      return;
+    }
     this.props.onSubmit(this.state.input);
     this.setState({ input: '' });
   };
-    
+
   render() {
     return (
       <div>
@@ -29,8 +30,8 @@ export class SearchBar extends Component {
             <input
               className="input"
               type="text"
-              //   autocomplete="off"
-              //   autofocus
+              autoComplete="off"
+              autoFocus
               placeholder="Search images and photos"
               onChange={this.handleNameChange}
             />
