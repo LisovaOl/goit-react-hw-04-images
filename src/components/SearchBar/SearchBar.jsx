@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FcSearch } from 'react-icons/fc';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export class SearchBar extends Component {
   state = {
     input: '',
@@ -13,7 +14,7 @@ export class SearchBar extends Component {
   handleSubmit = event => {
       event.preventDefault();
       if (this.state.input.trim() === '') {
-          toast("OOOPPPSSS !");
+          toast.warn('Please fill in the search field', { theme: 'colored' });
           return; 
       }
     this.props.onSubmit(this.state.input);
@@ -40,7 +41,6 @@ export class SearchBar extends Component {
             </button>
           </form>
         </header>
-        <ToastContainer autoClose={3000} />
       </div>
     );
   }

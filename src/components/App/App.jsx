@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 import Searchbar from '../SearchBar/SearchBar';
 // import fetchImages from 'services/api';
@@ -47,6 +47,7 @@ export default class App extends Component {
               </li>
             ))}
         </ul>
+        <ToastContainer autoClose={3000} />
       </div>
     );
   }
