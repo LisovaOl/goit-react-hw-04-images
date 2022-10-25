@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
 import axios from 'axios';
+// import { ToastContainer } from 'react-toastify';
+
+import Searchbar from '../SearchBar/SearchBar';
 // import fetchImages from 'services/api';
 
 // const API_KEY = '30815916-ab82dc6f0d54ac4918d959108';
@@ -8,30 +10,39 @@ axios.defaults.baseURL = 'https://pixabay.com/api/';
 
 export default class App extends Component {
   state = {
-    imageGallery: null,
-    loading: false,
+    input: '',
+    // imageGallery: null,
+    // loading: false,
   };
-  componentDidMount() {
-    fetch(
-      'https://pixabay.com/api/?q=dog&page=1&key=29502904-bb8b76f5b0eb667a79f07b05e&image_type=photo&orientation=horizontal&per_page=12'
-    )
-      .then(res => res.json())
-      .then(imageGallery => {
-        this.setState({ imageGallery })
-        console.log(imageGallery.hits)
-      }
-      )
-      .finally(() => this.setState({ loading: false }));
-  }
+
+  handleFormSubmit = input => {
+    this.setState({ input });
+    console.log(input);
+  };
+
+  // componentDidMount() {
+  //   fetch(
+  //     'https://pixabay.com/api/?q=dog&page=1&key=29502904-bb8b76f5b0eb667a79f07b05e&image_type=photo&orientation=horizontal&per_page=12'
+  //   )
+  //     .then(res => res.json())
+  //     .then(imageGallery => {
+  //       this.setState({ imageGallery });
+  //       // console.log(imageGallery.hits)
+  //     })
+  //     .finally(() => this.setState({ loading: false }));
+  // }
   render() {
     return (
       <div>
+        <Searchbar onSubmit={this.handleFormSubmit} />
         {this.state.loading && <p>loading...</p>}
         <ul>
           {this.state.imageGallery &&
             this.state.imageGallery.hits.map(hit => (
               <li key={hit.id}>
-                <p>ID: {hit.id} TAG: {hit.tags}</p>
+                <p>
+                  ID: {hit.id} TAG: {hit.tags}
+                </p>
                 <img src={hit.webformatURL} alt="dog" width="60px"></img>
               </li>
             ))}
@@ -53,14 +64,13 @@ export default class App extends Component {
 //       .then(res => console.log(res.json()))
 //       .then(value => console.log(value))
 
-    
-    // try {
-    //   const responce = axios.get(
-    //     'https://pixabay.com/api/?q=cat&page=1&key=30815916-ab82dc6f0d54ac4918d959108&image_type=photo&orientation=horizontal&per_page=12'
-    //   );
-    //   console.log(responce)
-    // }
-    // catch (error){}
+// try {
+//   const responce = axios.get(
+//     'https://pixabay.com/api/?q=cat&page=1&key=30815916-ab82dc6f0d54ac4918d959108&image_type=photo&orientation=horizontal&per_page=12'
+//   );
+//   console.log(responce)
+// }
+// catch (error){}
 // }
 //   render() {
 //     return <div>Finder Olena</div>;
@@ -68,7 +78,6 @@ export default class App extends Component {
 // }
 
 // export default App
-
 
 // import axios from 'axios';
 
