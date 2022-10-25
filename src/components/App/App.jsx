@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
-
+import ImageGallery from '../ImageGallery/ImageGallery';
 import Searchbar from '../SearchBar/SearchBar';
 // import fetchImages from 'services/api';
 
@@ -35,6 +35,7 @@ export default class App extends Component {
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
+        <ImageGallery/>
         {this.state.loading && <p>loading...</p>}
         <ul>
           {this.state.imageGallery &&
