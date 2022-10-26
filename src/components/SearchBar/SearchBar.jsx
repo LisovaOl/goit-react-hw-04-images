@@ -5,21 +5,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export class SearchBar extends Component {
   state = {
-    input: '',
+    inputQuery: '',
   };
 
   handleNameChange = event => {
-    this.setState({ input: event.currentTarget.value.toLowerCase() });
+    this.setState({ inputQuery: event.currentTarget.value.toLowerCase() });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.input.trim() === '') {
+    if (this.state.inputQuery.trim() === '') {
       toast.warn('Please fill in the search field', { theme: 'colored' });
       return;
     }
-    this.props.onSubmit(this.state.input);
-    this.setState({ input: '' });
+    this.props.onSubmit(this.state.inputQuery);
+    this.setState({ inputQuery: '' });
   };
 
   render() {
