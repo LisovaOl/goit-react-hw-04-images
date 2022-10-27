@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Searchbar from '../SearchBar/SearchBar';
-import * as api from '../../services/api';
+import Loader from '../Loader/Loader';
+import '../../index.css'
 
+import * as api from '../../services/api';
 
 export default class App extends Component {
   state = {
@@ -41,7 +43,6 @@ export default class App extends Component {
       if (gallery.length === 0) {
         toast.error('Nothing found for your request. Please, try again', {
           theme: 'colored',
-          
         });
       }
     } catch (error) {
@@ -52,13 +53,15 @@ export default class App extends Component {
   };
 
   render() {
+        const { loading, gallery} = this.state;
+
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery galleryItems={this.state.gallery} />
+        {loading && <Loader />}
+        <ImageGallery galleryItems={gallery} />
         <ToastContainer autoClose={3000} />
       </div>
     );
   }
 }
-

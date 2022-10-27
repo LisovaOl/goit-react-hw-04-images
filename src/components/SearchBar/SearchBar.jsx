@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FcSearch } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../../index.css';
 
 export class SearchBar extends Component {
   state = {
@@ -25,20 +26,20 @@ export class SearchBar extends Component {
   render() {
     return (
       <div>
-        <header className="searchbar">
-          <form className="form" onSubmit={this.handleSubmit}>
+        <header className="Searchbar">
+          <form className="SearchForm" onSubmit={this.handleSubmit}>
             <input
-              className="input"
+              className="SearchForm-input"
               type="text"
               autoComplete="off"
               autoFocus
               placeholder="Search images and photos"
               onChange={this.handleNameChange}
             />
-            <button type="submit" className="button">
-              <span className="button-label">
-                <FcSearch style={{ marginRight: 5, marginLeft: 5 }} /> Search{' '}
-              </span>
+            <button type="submit" className="SearchForm-button">
+              {/* <span className="SearchForm-button-label"> */}
+                <FcSearch  />
+              {/* </span> */}
             </button>
           </form>
         </header>
