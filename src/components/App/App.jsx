@@ -15,7 +15,7 @@ export default class App extends Component {
     gallery: [],
     error: null,
     loading: false,
-    currentLargeImage: '',
+    // currentLargeImage: '',
   };
   componentDidUpdate(_, prevState) {
     if (
@@ -28,7 +28,7 @@ export default class App extends Component {
 
   handleFormSubmit = query => {
     this.setState({ query });
-    console.log(query);
+    // console.log(query);
     this.setState({ query, page: 1, gallery: [] });
   };
 
