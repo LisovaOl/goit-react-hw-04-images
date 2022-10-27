@@ -16,7 +16,7 @@ export default class App extends Component {
     gallery: [],
     error: null,
     loading: false,
-    showModal: true,
+    showModal: false,
 
     // currentLargeImage: '',
   };
@@ -54,16 +54,24 @@ export default class App extends Component {
       this.setState({ loading: false });
     }
   };
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
 
   render() {
-        const { loading, gallery, showModal } = this.state;
+    const { loading, gallery, showModal } = this.state;
 
     return (
       <div>
+        <button type="button" onClick={this.toggleModal}>
+          Open Modal
+        </button>
         <Searchbar onSubmit={this.handleFormSubmit} />
         {loading && <Loader />}
         <ImageGallery galleryItems={gallery} />
-        {showModal && (<Modal />)}
+        {showModal && <Modal onClose={this.toggleModal} />}
         <ToastContainer autoClose={3000} />
       </div>
     );
