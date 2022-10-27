@@ -4,8 +4,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Searchbar from '../SearchBar/SearchBar';
 import Loader from '../Loader/Loader';
-import Modal from '../Modal/Modal'
-import '../../index.css'
+import Modal from '../Modal/Modal';
+import '../../index.css';
 
 import * as api from '../../services/api';
 
@@ -16,9 +16,8 @@ export default class App extends Component {
     gallery: [],
     error: null,
     loading: false,
-    showModal: false,
-
-    // currentLargeImage: '',
+    // showModal: false,
+    largeImage: '',
   };
   componentDidUpdate(_, prevState) {
     if (
@@ -54,24 +53,34 @@ export default class App extends Component {
       this.setState({ loading: false });
     }
   };
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-    }));
+  // toggleModal = () => {
+  //   this.setState(({ showModal }) => ({
+  //     showModal: !showModal,
+  //   }));
+  // };
+
+  openModal = largeImageURL => {
+    this.setState({ largeImage: largeImageURL });
+    console.log(largeImageURL);
+  };
+  closeModal = () => {
+    this.setState({ largeImage: '' });
   };
 
   render() {
-    const { loading, gallery, showModal } = this.state;
+    const { loading, gallery, largeImage } = this.state;
 
     return (
       <div>
-        <button type="button" onClick={this.toggleModal}>
+        {/* <button type="button" onClick={this.toggleModal}>
           Open Modal
-        </button>
+        </button> */}
         <Searchbar onSubmit={this.handleFormSubmit} />
         {loading && <Loader />}
-        <ImageGallery galleryItems={gallery} />
-        {showModal && <Modal onClose={this.toggleModal} />}
+        <ImageGallery galleryItems={gallery} onClick={this.openModal} />
+        {largeImage && (
+          <Modal onClose={this.closeModal} largeImageURL={largeImage} />
+        )}
         <ToastContainer autoClose={3000} />
       </div>
     );

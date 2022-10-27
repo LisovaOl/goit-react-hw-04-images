@@ -4,14 +4,17 @@ import '../../index.css';
 
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 
-const ImageGallery = ({ galleryItems }) => {
+const ImageGallery = ({ galleryItems, onClick }) => {
   return (
     <div>
       <ul className="ImageGallery">
         {galleryItems.map(galleryItem => {
           return (
-            <ImageGalleryItem key={galleryItem.id} galleryItem={galleryItem} />
-
+            <ImageGalleryItem
+              key={galleryItem.id}
+              galleryItem={galleryItem}
+              onClick={onClick}
+            />
           );
         })}
       </ul>
@@ -25,7 +28,7 @@ ImageGallery.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
-  // onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;

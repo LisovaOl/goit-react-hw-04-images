@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../index.css';
 
-const ImageGalleryItem = ({ galleryItem}) => {
+const ImageGalleryItem = ({ galleryItem, onClick }) => {
   return (
     <li key={galleryItem.id} className="ImageGalleryItem">
       <img
         className="ImageGalleryItem-image"
         src={galleryItem.webformatURL}
         alt={galleryItem.tags}
+        onClick={() => onClick(galleryItem.largeImageURL)}
       ></img>
     </li>
   );
@@ -19,9 +20,9 @@ ImageGalleryItem.propTypes = {
     id: PropTypes.number.isRequired,
     webformatURL: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
-    // largeImageURL: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
   }),
-  // onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;
