@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Searchbar from '../SearchBar/SearchBar';
 import Loader from '../Loader/Loader';
+import Modal from '../Modal/Modal'
 import '../../index.css'
 
 import * as api from '../../services/api';
@@ -15,6 +16,8 @@ export default class App extends Component {
     gallery: [],
     error: null,
     loading: false,
+    showModal: false,
+
     // currentLargeImage: '',
   };
   componentDidUpdate(_, prevState) {
@@ -53,13 +56,14 @@ export default class App extends Component {
   };
 
   render() {
-        const { loading, gallery} = this.state;
+        const { loading, gallery, showModal } = this.state;
 
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
         {loading && <Loader />}
         <ImageGallery galleryItems={gallery} />
+        {showModal && (<Modal />)}
         <ToastContainer autoClose={3000} />
       </div>
     );
