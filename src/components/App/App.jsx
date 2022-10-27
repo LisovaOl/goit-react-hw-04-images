@@ -16,7 +16,7 @@ export default class App extends Component {
     gallery: [],
     error: null,
     loading: false,
-    showModal: false,
+    showModal: true,
 
     // currentLargeImage: '',
   };
