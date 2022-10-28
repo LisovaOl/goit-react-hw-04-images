@@ -12,16 +12,18 @@ export class SearchBar extends Component {
     this.setState({ inputQuery: event.currentTarget.value.toLowerCase() });
   };
 
-
   render() {
     return (
       <div>
         <header className="Searchbar">
-          <form className="SearchForm" onSubmit={event => {
-            event.preventDefault();
-            this.props.onSubmit(this.state.inputQuery);
-            event.target.reset(); //очистка поля введення
-          }}>
+          <form
+            className="SearchForm"
+            onSubmit={event => {
+              event.preventDefault();
+              this.props.onSubmit(this.state.inputQuery);
+              event.target.reset(); //очистка поля введення
+            }}
+          >
             <input
               className="SearchForm-input"
               type="text"

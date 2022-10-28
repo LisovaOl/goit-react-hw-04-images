@@ -87,7 +87,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { loading, gallery, largeImage } = this.state;
+    const { loading, gallery, largeImage, error } = this.state;
 
     return (
       <div>
@@ -95,6 +95,7 @@ export default class App extends Component {
           Open Modal
         </button> */}
         <Searchbar onSubmit={this.handleFormSubmit} />
+        {error && <p>{error}</p>}
         {loading && <Loader />}
         <ImageGallery galleryItems={gallery} onClick={this.openModal} />
         {largeImage && (
