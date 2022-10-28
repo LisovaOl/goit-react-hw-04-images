@@ -5,6 +5,7 @@ import ImageGallery from '../ImageGallery/ImageGallery';
 import Searchbar from '../SearchBar/SearchBar';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
+import Button from '../Button/button';
 import '../../index.css';
 
 import * as api from '../../services/api';
@@ -67,6 +68,9 @@ export default class App extends Component {
     this.setState({ largeImage: '' });
   };
 
+  loadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+  }
   render() {
     const { loading, gallery, largeImage } = this.state;
 
@@ -81,6 +85,11 @@ export default class App extends Component {
         {largeImage && (
           <Modal onClose={this.closeModal} largeImageURL={largeImage} />
         )}
+
+        {gallery.length >= 12 && (
+          <Button onClick={this.loadMore} />
+        )}
+
         <ToastContainer autoClose={3000} />
       </div>
     );

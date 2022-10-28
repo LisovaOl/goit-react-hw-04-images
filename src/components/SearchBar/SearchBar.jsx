@@ -20,6 +20,7 @@ export class SearchBar extends Component {
       return;
     }
     this.props.onSubmit(this.state.inputQuery);
+    event.target.reset(); // очистка поля введення
     this.setState({ inputQuery: '' });
   };
 
