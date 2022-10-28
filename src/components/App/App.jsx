@@ -28,10 +28,16 @@ export default class App extends Component {
       this.fetchImageGallery(this.state.query, this.state.page);
     }
   }
-
   handleFormSubmit = query => {
-    this.setState({ query });
-    // console.log(query);
+    if (query.trim() === '') {
+      toast.error('Please, enter your request');
+      return;
+    }
+    if (query === this.state.query) {
+      toast.error('Please, enter something new');
+      return;
+    }
+    console.log(query);
     this.setState({ query, page: 1, gallery: [] });
   };
 
@@ -70,7 +76,7 @@ export default class App extends Component {
 
   loadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
-  }
+  };
   render() {
     const { loading, gallery, largeImage } = this.state;
 
@@ -86,9 +92,7 @@ export default class App extends Component {
           <Modal onClose={this.closeModal} largeImageURL={largeImage} />
         )}
 
-        {gallery.length >= 12 && (
-          <Button onClick={this.loadMore} />
-        )}
+        {gallery.length >= 12 && <Button onClick={this.loadMore} />}
 
         <ToastContainer autoClose={3000} />
       </div>
