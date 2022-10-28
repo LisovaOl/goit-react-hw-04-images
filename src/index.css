@@ -204,6 +204,8 @@ img {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
   color: #fff;
   border: 0;
   text-decoration: none;

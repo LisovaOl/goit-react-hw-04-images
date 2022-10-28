@@ -2,23 +2,17 @@ import React from 'react';
 
 import '../../index.css';
 
-const Button = ({ loadMore }) => {
+const Button = ({ onClick }) => {
   return (
     <>
-      <button
-        onClick={loadMore}
-        type="button"
-        className="Button"
-      >
+      <button onClick={onClick} type="button" className="Button">
         Load more
       </button>
     </>
   );
 };
 
-
-export default Button
-
+export default Button;
 
 // Опис компонента <Button>
 

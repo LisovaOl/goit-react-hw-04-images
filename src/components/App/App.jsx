@@ -21,13 +21,25 @@ export default class App extends Component {
     largeImage: '',
   };
   componentDidUpdate(_, prevState) {
+    // console.log('prevState.page:', prevState.page);
+    // console.log('this.state.page:', this.state.page);
+
+    // console.log('prevState.query:', prevState.query);
+    // console.log('this.state.query:', this.state.query);
+
     if (
       prevState.page !== this.state.page ||
       prevState.query !== this.state.query
     ) {
       this.fetchImageGallery(this.state.query, this.state.page);
+      // console.log('fatch');
     }
   }
+
+  loadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+  };
+
   handleFormSubmit = query => {
     if (query.trim() === '') {
       toast.error('Please, enter your request');
@@ -74,9 +86,6 @@ export default class App extends Component {
     this.setState({ largeImage: '' });
   };
 
-  loadMore = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
-  };
   render() {
     const { loading, gallery, largeImage } = this.state;
 
