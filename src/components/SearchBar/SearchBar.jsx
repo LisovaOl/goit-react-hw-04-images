@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FcSearch } from 'react-icons/fc';
+import PropTypes from 'prop-types';
+
 import 'react-toastify/dist/ReactToastify.css';
 import '../../index.css';
 
@@ -45,3 +47,7 @@ export class SearchBar extends Component {
 }
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func,
+};
