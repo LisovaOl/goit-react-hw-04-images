@@ -4,25 +4,25 @@ import PropTypes from 'prop-types';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '../../index.css';
+
+export default function SearchBar({ onSubmit }) {
   
-export default function SearchBar({onSubmit}) {
   const [inputQuery, setInputQuery] = useState('');
 
   const handleNameChange = event => {
     setInputQuery(event.currentTarget.value.toLowerCase());
   };
 
+  const onSubmitForm = event => {
+    event.preventDefault();
+    onSubmit(inputQuery);
+    event.target.reset(); //очистка поля введення
+  };
+
   return (
     <div>
       <header className="Searchbar">
-        <form
-          className="SearchForm"
-          onSubmit={event => {
-            event.preventDefault();
-            onSubmit(inputQuery);
-            event.target.reset(); //очистка поля введення
-          }}
-        >
+        <form className="SearchForm" onSubmit={onSubmitForm}>
           <input
             className="SearchForm-input"
             type="text"
@@ -89,4 +89,3 @@ SearchBar.propTypes = {
 // }
 
 // export default SearchBar;
-
