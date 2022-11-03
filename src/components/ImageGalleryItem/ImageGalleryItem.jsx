@@ -27,10 +27,10 @@ ImageGalleryItem.propTypes = {
 
 export default ImageGalleryItem;
 
-// Опис компонента <ImageGalleryItem>
+// // Опис компонента <ImageGalleryItem>
 
-// Компонент елемента списку із зображенням. Створює DOM-елемент наступної структури.
+// // Компонент елемента списку із зображенням. Створює DOM-елемент наступної структури.
 
-<li class="gallery-item">
-  <img src="" alt="" />
-</li>;
+// <li class="gallery-item">
+//   <img src="" alt="" />
+// </li>;
