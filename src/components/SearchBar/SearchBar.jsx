@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../../index.css';
 
 export default function SearchBar({ onSubmit }) {
-  
+
   const [inputQuery, setInputQuery] = useState('');
 
   const handleNameChange = event => {
