@@ -43,13 +43,18 @@ export default function App() {
     fetchImageGallery();
   }, [page, query]);
 
-  const handleFormSubmit = query => {
-    if (query.trim() === '') {
+  const handleFormSubmit = val => {
+    if (val.trim() === '') {
       toast.error('Please, enter your request');
       return;
     }
-    console.log(query);
-    setQuery(query);
+    if (val === query) {
+      toast.error('Please, enter something new');
+      return;
+    }
+
+    console.log(val);
+    setQuery(val);
     setPage(1);
     setGallery([]);
   };
